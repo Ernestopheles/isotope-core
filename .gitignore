@@ -1,5 +1,73 @@
-/vendor/
-/node_modules/
-/composer.lock
+# gitignore für ein Projekt (submodule)
+#
+# git soll folgendes behandeln:
+#
+#    Alle Dateien in webdev (scripte, vscode-Arbeitsbereich)
+#    Den projects Ordner (Projekte und tailwind-Dateien)
+#    Den tailwind-Ordner ohne die Module
+
+# Note:
+# To effectively apply the changes you will have
+# to re-index the git index (if there are already
+# commited files)
+#
+# $ git rm -r -f --cached .
+# $ git add .
+# $ git commit -m ".gitignore index rebuild"
+
+######################################
+# Schliesse aus:
+######################################
 /package-lock.json
+
+# Composer
+/composer.lock
+/vendor/
+
+# Composer bin
+/tools/*/vendor
+
+# Contao
+assets
+contao-manager
+system/cache
+system/tmp
+var
+
+# Cypress
+/cypress/screenshots/
+/cypress/videos/
+/cypress/webspace/*
+!/cypress/webspace/.env
+!/cypress/webspace/composer.json
+
+# Node
+/node_modules/
+npm-debug.log
+
+
+# PhpUnit
+/.phpunit.result.cache
+/cache/test
+
+# CS fixer
 /.php_cs.cache
+
+
+**.lock
+**.log
+.log
+/logs
+.tmp
+
+# Config
+.DS_Store
+.env
+.env.local
+
+
+
+
+
+
+
