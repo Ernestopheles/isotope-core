@@ -298,12 +298,14 @@ abstract class Module extends AbstractFrontendModule
             array_shift($arrFragments);
         }
 
-        // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['getPageIdFromUrl']) && \is_array($GLOBALS['TL_HOOKS']['getPageIdFromUrl'])) {
-            foreach ($GLOBALS['TL_HOOKS']['getPageIdFromUrl'] as $callback) {
-                $arrFragments = System::importStatic($callback[0])->{$callback[1]}($arrFragments);
-            }
-        }
+        // // HOOK: add custom logic
+        // if (isset($GLOBALS['TL_HOOKS']['getPageIdFromUrl']) && \is_array($GLOBALS['TL_HOOKS']['getPageIdFromUrl'])) {
+        //     foreach ($GLOBALS['TL_HOOKS']['getPageIdFromUrl'] as $callback) {
+        //         $arrFragments = System::importStatic($callback[0])->{$callback[1]}($arrFragments);
+        //     }
+        // }
+// TODO: Replace this hook
+
 
         $strParams = '';
         $arrGet    = array();
