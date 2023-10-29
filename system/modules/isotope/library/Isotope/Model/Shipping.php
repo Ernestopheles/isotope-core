@@ -60,6 +60,7 @@ use Isotope\Translation;
  * @property bool   $enabled
  */
 abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggregate
+// TODO: for Contao5: replace WeightAggregate interface
 {
     const QUANTITY_MODE_ITEMS = 'cart_items';
     const QUANTITY_MODE_PRODUCTS = 'cart_products';
@@ -150,13 +151,15 @@ abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggr
         $objScale = Isotope::getCart()->addToScale();
 
         if (($minWeight = Weight::createFromTimePeriod($this->minimum_weight)) !== null
+// TODO: for Contao5: replace Weight::createFromTimeperiod()
             && $objScale->isLessThan($minWeight)
         ) {
             return false;
         }
 
         if (($maxWeight = Weight::createFromTimePeriod($this->maximum_weight)) !== null
-            && $objScale->isMoreThan($maxWeight)
+// TODO: for Contao5: replace Weight::createFromTimeperiod()
+&& $objScale->isMoreThan($maxWeight)
         ) {
             return false;
         }
@@ -376,7 +379,8 @@ abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggr
     public function getWeight()
     {
         return Weight::createFromTimePeriod($this->shipping_weight);
-    }
+// TODO: for Contao5: replace Weight::createFromTimeperiod()
+}
 
     /**
      * Logs information for this shipping method if enabled.

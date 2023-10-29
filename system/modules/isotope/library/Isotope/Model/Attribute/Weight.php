@@ -55,13 +55,16 @@ class Weight extends Attribute
     public function generate(IsotopeProduct $objProduct, array $arrOptions = array())
     {
         if (!$objProduct instanceof WeightAggregate || ($weight = $objProduct->getWeight()) === null) {
+// TODO: for Contao5: Replace class WeightAggrgate and method getWeight()
             return '';
         }
 
         return sprintf(
             $arrOptions['format'] ?? '%s %s',
             Isotope::formatPrice($weight->getWeightValue(), false),
-            $weight->getWeightUnit()
-        );
+ // TODO: for Contao5: Replace Haste\Units\Mass\Weighable::getWeightValue()
+ $weight->getWeightUnit()
+ // TODO: for Contao5: Replace Haste\Units\Mass\Weighable::getWeightUnit()
+);
     }
 }

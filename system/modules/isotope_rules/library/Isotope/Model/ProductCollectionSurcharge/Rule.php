@@ -38,13 +38,15 @@ class Rule extends ProductCollectionSurcharge implements IsotopeProductCollectio
         $objScale = Isotope::getCart()->addToScale();
 
         if (($minWeight = Weight::createFromTimePeriod($objRule->minWeight)) !== null
-            && $objScale->isLessThan($minWeight)
+// TODO: for Contao5: Replace Weight::createFromTimePeriod()
+        && $objScale->isLessThan($minWeight)
         ) {
             return null;
         }
 
         if (($maxWeight = Weight::createFromTimePeriod($objRule->maxWeight)) !== null
-            && $objScale->isMoreThan($maxWeight)
+// TODO: for Contao5: Replace Weight::createFromTimePeriod()
+&& $objScale->isMoreThan($maxWeight)
         ) {
             return null;
         }
@@ -60,7 +62,7 @@ class Rule extends ProductCollectionSurcharge implements IsotopeProductCollectio
 
         $arrCollectionItems = $objCollection->getItems();
 
-        $blnMatch      = false;
+        // $blnMatch      = false;
         $blnPercentage = $objRule->isPercentage();
         $fltDiscount   = $blnPercentage ? $objRule->getPercentage() : 0;
         $fltTotal      = 0;

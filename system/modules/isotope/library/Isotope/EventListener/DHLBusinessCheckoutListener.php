@@ -141,6 +141,7 @@ class DHLBusinessCheckoutListener
         $details->setCustomerReference($order->getDocumentNumber());
         $details->setReturnReference($order->getDocumentNumber());
         $details->setWeight($scale->amountIn(Unit::KILOGRAM));
+        // TODO: for Contao5: replace Haste\Units\Mass\Scale::amountIn() and constant Unit::KILOGRAM
 
         $shippingDate = StringUtil::deserialize($shippingMethod->dhl_shipping, true);
         if (isset($shippingDate['value']) && $shippingDate['value'] && $shippingDate['unit']) {

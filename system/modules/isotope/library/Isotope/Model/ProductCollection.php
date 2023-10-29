@@ -1453,7 +1453,8 @@ abstract class ProductCollection extends TypeAgent implements IsotopeProductColl
      * @inheritdoc
      */
     public function addToScale(Scale $objScale = null)
-    {
+// TODO: for Contao5: Replace Scale object and class
+         {
         if (null === $objScale) {
             $objScale = new Scale();
         }
@@ -1466,7 +1467,8 @@ abstract class ProductCollection extends TypeAgent implements IsotopeProductColl
             $objProduct = $objItem->getProduct();
 
             if ($objProduct instanceof WeightAggregate) {
-                $objWeight = $objProduct->getWeight();
+// TODO: for Contao5: replace class WeightAggregate
+              $objWeight = $objProduct->getWeight();
 
                 if (null !== $objWeight) {
                     for ($i = 0; $i < $objItem->quantity; $i++) {
@@ -1475,7 +1477,8 @@ abstract class ProductCollection extends TypeAgent implements IsotopeProductColl
                 }
 
             } elseif ($objProduct instanceof Weighable) {
-                for ($i = 0; $i < $objItem->quantity; $i++) {
+// TODO: fpo Contao5: replace class Weighable
+          for ($i = 0; $i < $objItem->quantity; $i++) {
                     $objScale->add($objProduct);
                 }
             }

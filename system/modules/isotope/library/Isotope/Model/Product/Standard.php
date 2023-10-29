@@ -47,6 +47,7 @@ use Isotope\Template;
  * Standard implementation of an Isotope product.
  */
 class Standard extends AbstractProduct implements WeightAggregate, IsotopeProductWithOptions
+// TODO: for Contao5: Replace interface WeightAggregate
 {
 
     /**
@@ -347,6 +348,7 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
         }
 
         return Weight::createFromTimePeriod($this->arrData['shipping_weight']);
+// TODO: for Contao5: Replace Weight::createFromTimePeriod
     }
 
     /**

@@ -70,6 +70,7 @@ class Flat extends Shipping
 
         if ('perWeight' === $this->flatCalculation) {
             $weight = Weight::createFromTimePeriod($this->flatWeight);
+// TODO: for Contao5: Replace Weight::createFromTimePeriod()
 
             if ($weight) {
                 $cartWeight = floor($objCollection->addToScale()->amountIn($weight->getWeightUnit()));
