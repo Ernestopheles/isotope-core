@@ -37,14 +37,10 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "composer-runtime-api": "^2",
-        "contao/core-bundle": "^4.13",
         "contao-community-alliance/composer-plugin": "^2.4 || ^3.0",
-        "terminal42/contao-conditionalselectmenu": "^3.0.3 || ^4.0",
         "terminal42/dcawizard": "^2.3",
-        "codefog/contao-haste": "^4.24.3",
         "menatwork/contao-multicolumnwizard-bundle": "^3.4",
         "terminal42/contao-tablelookupwizard": "^3.2 || ^4.0",
-        "terminal42/notification_center": "^1.0",
         "terminal42/dc_multilingual": "^4.0",
         "tecnickcom/tcpdf": "^6.2.22",
         "patchwork/utf8": "^1.2",
@@ -52,9 +48,24 @@
         "symfony/filesystem": "^4.4 || ^5.0 || ^6.0",
         "symfony/http-client": "^4.4 || ^5.0 || ^6.0",
         "symfony/polyfill-php80": "^1.25",
-        "hashids/hashids": "^4.1"
+        "hashids/hashids": "^4.1",
+        "jordanbrauer/unit-converter": "^0.9.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../conditionalselectmenu"
+        },
+        {
+            "type": "path",
+            "url": "../../contao_notification_center"
+        }
+    ],
     "require-dev": {
+        "contao/core-bundle": "^5",
+        "terminal42/contao-conditionalselectmenu": "dev-main",
+        "terminal42/notification_center": "dev-main",
+        "codefog/contao-haste": "^5.1",
         "contao/manager-plugin": "^2.0",
         "terminal42/contao-fineuploader": "^2.0 || ^3.0",
         "terminal42/contao-changelanguage": "^3.0",
