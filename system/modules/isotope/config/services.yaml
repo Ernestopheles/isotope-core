@@ -47,12 +47,12 @@ services:
         arguments:
             - '@isotope.unit_registry'
             - '@isotope.binary_calculator'
-        public: true
 
     isotope.unit_registry:
         class: UnitConverter\Registry\UnitRegistry
-        public: true
 
     isotope.binary_calculator:
         class: UnitConverter\Calculator\BinaryCalculator
-        public: true
+
+    isotope.unit_converter_provider:
+        class: Isotope\UnitConverterProvider

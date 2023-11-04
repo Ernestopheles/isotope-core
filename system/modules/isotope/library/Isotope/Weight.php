@@ -2,27 +2,56 @@
 
 namespace Isotope;
 
-use UnitConverter\UnitConverter;
+use Contao\StringUtil;
 use Isotope\Interfaces\IsotopeWeighable;
+use Isotope\UnitConverterProvider;
+use UnitConverter\UnitConverter;
 
 class Weight implements IsotopeWeighable
 {
-    protected $weight;
+    protected UnitConverterProvider $unitConverterProvider;
+    protected UnitConverter $unitConverter;
 
-    public function __construct($weight, $unit)
+    protected float $fltValue;
+    protected float $strUnit;
+
+    public function __construct($fltValue, $strUnit)
     {
-        // Get the UnitConverter service
-        $unitConverter = $GLOBALS['container']->get('isotope.unit_converter');
-        $this->weight = new Mass($weight, $unit);
+        $this->fltValue = $fltValue;
+        $this->strUnit = (string) $strUnit;
     }
 
     public function getWeightValue()
     {
-        return $this->weight->amount();
+        return $this->fltValue;
     }
 
     public function getWeightUnit()
     {
-        return $this->weight->unit();
+        return $this->strUnit;
+    }
+
+    /**
+     * Create weight object from timePeriod widget value
+     * @param   mixed $arrData
+     * @return  Weight|null
+     */
+    public static function createFromTimePeriod($unitConverterProvider, $arrData)
+    {
+        $unitConverter = $unitConverterProvider->create();
+
+        $arrData = StringUtil::deserialize($arrData);
+
+        if (
+            empty($arrData)
+            || !is_array($arrData)
+            || $arrData['value'] === ''
+            || $arrData['unit'] === ''
+            || !in_array($arrData['unit'], $unitConverter->getRegistry()->listUnits('Mass'))
+        ) {
+            return null;
+        }
+
+        return new static($arrData['value'], $arrData['unit']);
     }
 }
