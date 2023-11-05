@@ -28,7 +28,6 @@
 /tools/*/vendor
 
 # Contao
-assets
 contao-manager
 system/cache
 system/tmp
