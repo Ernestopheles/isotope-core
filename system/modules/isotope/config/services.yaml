@@ -43,16 +43,36 @@ services:
         public: true
 
     isotope.unit_converter:
-        class: UnitConverter\UnitConverter
-        arguments:
-            - '@isotope.unit_registry'
-            - '@isotope.binary_calculator'
+            class: UnitConverter\UnitConverter
+            arguments:
+                - '@isotope.unit_registry'
+                - '@isotope.binary_calculator'
 
     isotope.unit_registry:
         class: UnitConverter\Registry\UnitRegistry
+        arguments:
+            - ['@unit.milligram', '@unit.gram', '@unit.kilogram', '@unit.ounce', '@unit.pound', '@unit.stone']
 
     isotope.binary_calculator:
         class: UnitConverter\Calculator\BinaryCalculator
+        arguments:
+            - 5 # Precision
+            - 2 # Rounding mode
 
     isotope.unit_converter_provider:
         class: Isotope\UnitConverterProvider
+        arguments:
+            - '@isotope.binary_calculator'
+            - '@isotope.unit_registry'
+            - ['@unit.milligram', '@unit.gram', '@unit.kilogram', '@unit.ounce', '@unit.pound', '@unit.stone']
+            - 2 # Precision
+            - PHP_ROUND_HALF_UP # Rounding mode
+
+    unit.milligram: UnitConverter\Unit\Mass\Milligram
+    unit.gram: UnitConverter\Unit\Mass\Gram
+    unit.kilogram: UnitConverter\Unit\Mass\Kilogram
+    unit.ounce: UnitConverter\Unit\Mass\Ounce
+    unit.pound: UnitConverter\Unit\Mass\Pound
+    unit.stone: UnitConverter\Unit\Mass\Stone
+
+    Isotope\Isotope\UnitConverterProvider: '@isotope.unit_converter_provider'

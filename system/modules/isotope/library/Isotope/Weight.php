@@ -36,7 +36,7 @@ class Weight implements IsotopeWeighable
      * @param   mixed $arrData
      * @return  Weight|null
      */
-    public static function createFromTimePeriod($unitConverterProvider, $arrData)
+    public static function createFromTimePeriod(UnitConverterProvider $unitConverterProvider, $arrData)
     {
         $unitConverter = $unitConverterProvider->create();
 
