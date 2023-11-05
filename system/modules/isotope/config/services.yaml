@@ -68,11 +68,17 @@ services:
             - 2 # Precision
             - PHP_ROUND_HALF_UP # Rounding mode
 
-    unit.milligram: UnitConverter\Unit\Mass\Milligram
-    unit.gram: UnitConverter\Unit\Mass\Gram
-    unit.kilogram: UnitConverter\Unit\Mass\Kilogram
-    unit.ounce: UnitConverter\Unit\Mass\Ounce
-    unit.pound: UnitConverter\Unit\Mass\Pound
-    unit.stone: UnitConverter\Unit\Mass\Stone
+    unit.milligram:
+        class: UnitConverter\Unit\Mass\Milligram
+    unit.gram:
+        class: UnitConverter\Unit\Mass\Gram
+    unit.kilogram:
+        class: UnitConverter\Unit\Mass\Kilogram
+    unit.ounce:
+        class: UnitConverter\Unit\Mass\Ounce
+    unit.pound:
+        class: UnitConverter\Unit\Mass\Pound
+    unit.stone:
+        class: UnitConverter\Unit\Mass\Stone
 
     Isotope\Isotope\UnitConverterProvider: '@isotope.unit_converter_provider'
