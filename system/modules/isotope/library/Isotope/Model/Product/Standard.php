@@ -22,7 +22,6 @@ use Contao\System;
 use Contao\Widget;
 use Hashids\Hashids;
 use Haste\Generator\RowClass;
-use Haste\Units\Mass\Weight;
 use Haste\Units\Mass\WeightAggregate;
 use Haste\Util\Url;
 use Isotope\Collection\ProductPrice as ProductPriceCollection;
@@ -42,6 +41,7 @@ use Isotope\Model\Gallery\Standard as StandardGallery;
 use Isotope\Model\ProductPrice;
 use Isotope\Model\ProductType;
 use Isotope\Template;
+use Isotope\Weight;
 
 /**
  * Standard implementation of an Isotope product.
@@ -348,7 +348,6 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
         }
 
         return Weight::createFromTimePeriod($this->arrData['shipping_weight']);
-// TODO: for Contao5: Replace Weight::createFromTimePeriod
     }
 
     /**
