@@ -28,10 +28,10 @@ class Weight implements IsotopeWeighable
      */
     private $unitConverter;
 
-    public function __construct($fltValue, $strUnit, UnitConverter $unitConverter)
+    public function __construct(UnitConverter $unitConverter)
     {
-        $this->fltValue = $fltValue;
-        $this->strUnit = (string) $strUnit;
+        $this->fltValue = 1;
+        $this->strUnit = 'kg';
         $this->unitConverter = $unitConverter;
     }
 
