@@ -71,7 +71,7 @@ services:
         class: UnitConverter\Calculator\BinaryCalculator
         arguments:
             - 2 # Precision
-            - PHP_ROUND_HALF_UP # Rounding mode
+            - 1 # PHP_ROUND_HALF_UP - Rounding mode
 
     isotope.weight:
         class: Isotope\Weight
