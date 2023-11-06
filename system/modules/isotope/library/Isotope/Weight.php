@@ -12,7 +12,7 @@ class Weight implements IsotopeWeighable
 {
     public function __construct(
         private float $fltValue,
-        private string $strUnit,
+        private string $strUnit)
     {
     }
 
