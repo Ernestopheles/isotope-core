@@ -42,7 +42,8 @@ services:
         alias: contao.fragment.registry
         public: true
 
-    UnitConverter\UnitConverter:
+    isotope.unit_converter:
+        class: UnitConverter\UnitConverter'
         arguments:
             - '@isotope.unit_registry'
             - '@isotope.binary_calculator'
@@ -74,4 +75,4 @@ services:
 
     Isotope\Weight:
         arguments:
-            - '@UnitConverter\UnitConverter'
+            - '@isotope.unit_converter'

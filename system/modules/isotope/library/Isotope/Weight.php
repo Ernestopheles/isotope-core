@@ -4,6 +4,7 @@ namespace Isotope;
 
 use Contao\StringUtil;
 use Contao\System;
+use Haste\Units\Dimension\Unit;
 use Isotope\Interfaces\IsotopeWeighable;
 use UnitConverter\UnitConverter;
 
@@ -13,7 +14,9 @@ class Weight implements IsotopeWeighable
         private float $fltValue,
         private string $strUnit,
         private UnitConverter $unitConverter)
-    {}
+    {
+        $this->unitConverter = $unitConverter ?? System::getContainer()->get('isotope.unit_converter');
+    }
 
     public function getWeightValue()
     {
@@ -34,7 +37,7 @@ class Weight implements IsotopeWeighable
     {
         $arrData = StringUtil::deserialize($arrData);
 
-        $weight =  new Weight(self::$unitConverter, $arrData['value'], $arrData['unit']);
+        $weight =  new Weight($arrData['value'], $arrData['unit']);
 
         if (empty($arrData)
             || !is_array($arrData)
