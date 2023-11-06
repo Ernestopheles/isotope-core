@@ -73,8 +73,6 @@ services:
             - 2 # Precision
             - 1 # PHP_ROUND_HALF_UP - Rounding mode
 
-    isotope.weight:
-        class: Isotope\Weight
+    Isotope\Weight:
         arguments:
             - '@isotope.unit_converter'
-        public: true
