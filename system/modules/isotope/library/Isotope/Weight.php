@@ -6,9 +6,16 @@ namespace Isotope;
 use Contao\StringUtil;
 use Contao\System;
 use Isotope\Interfaces\IsotopeWeighable;
+use UnitConverter\UnitConverter;
 
 class Weight implements IsotopeWeighable
 {
+
+    /**
+     * UnitConverter service instance
+     * @param   UnitConverter
+     */
+    protected $unitConverter;
 
     /**
      * Weight amount
@@ -23,8 +30,9 @@ class Weight implements IsotopeWeighable
     protected $strUnit;
 
 
-    public function __construct($fltValue, $strUnit)
+    public function __construct(UnitConverter $unitConverter, $fltValue, $strUnit)
     {
+        $this->unitConverter = $unitConverter;
         $this->fltValue = $fltValue;
         $this->strUnit = (string) $strUnit;
     }
@@ -44,21 +52,18 @@ class Weight implements IsotopeWeighable
      * @param   mixed $arrData
      * @return  Weight|null
      */
-    public static function createFromTimePeriod($arrData)
+    public function createFromTimePeriod($arrData)
     {
-        $container = System::getContainer();
-        $unitConverter = $container->get('isotope.unit_converter');
-
         $arrData = StringUtil::deserialize($arrData);
 
         if (empty($arrData)
             || !is_array($arrData)
             || $arrData['value'] === ''
             || $arrData['unit'] === ''
-            || !in_array($arrData['unit'], $unitConverter->getRegistry()->listUnits('Mass'))) {
+            || !in_array($arrData['unit'], $this->unitConverter->getRegistry()->listUnits('Mass'))) {
             return null;
         }
 
-        return new static($arrData['value'], $arrData['unit']);
+        return new Weight($arrData['value'], $arrData['unit']);
     }
 }

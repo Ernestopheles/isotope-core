@@ -347,7 +347,8 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
             return null;
         }
 
-        return Weight::createFromTimePeriod($this->arrData['shipping_weight']);
+        $weight = new Weight($this->arrData['shipping_weight'], $this->arrData['weight_unit']);
+        return $weight->createFromTimePeriod($this->arrData['shipping_weight']);
     }
 
     /**
