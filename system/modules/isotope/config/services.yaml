@@ -1,8 +1,4 @@
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        
     Isotope\Controller\PostsaleController:
         arguments:
             - '@contao.framework'
@@ -46,8 +42,7 @@ services:
         alias: contao.fragment.registry
         public: true
 
-    isotope.unit_converter:
-        class: UnitConverter\UnitConverter
+    UnitConverter\UnitConverter:
         arguments:
             - '@isotope.unit_registry'
             - '@isotope.binary_calculator'
@@ -78,4 +73,5 @@ services:
             - 1 # PHP_ROUND_HALF_UP - Rounding mode
 
     Isotope\Weight:
-        arguments: ['@isotope.unit_converter']
+        arguments:
+            - '@UnitConverter\UnitConverter'
