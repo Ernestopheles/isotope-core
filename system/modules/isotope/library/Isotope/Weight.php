@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Isotope;
 
 use Contao\StringUtil;
@@ -27,7 +26,7 @@ class Weight implements IsotopeWeighable
      * UnitConverter service instance
      * @param   UnitConverter
      */
-    protected $unitConverter;
+    private $unitConverter;
 
     public function __construct($fltValue, $strUnit, UnitConverter $unitConverter)
     {
