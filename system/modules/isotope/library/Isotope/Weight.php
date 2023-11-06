@@ -9,31 +9,11 @@ use UnitConverter\UnitConverter;
 
 class Weight implements IsotopeWeighable
 {
-
-    /**
-     * Weight amount
-     * @param   float
-     */
-    protected $fltValue;
-
-    /**
-     * Weight unit
-     * @param   string
-     */
-    protected $strUnit;
-
-    /**
-     * UnitConverter service instance
-     * @param   UnitConverter
-     */
-    private $unitConverter;
-
-    public function __construct(UnitConverter $unitConverter)
-    {
-        $this->fltValue = 1;
-        $this->strUnit = 'kg';
-        $this->unitConverter = $unitConverter;
-    }
+    public function __construct(
+        private float $fltValue,
+        private string $strUnit,
+        private UnitConverter $unitConverter)
+    {}
 
     public function getWeightValue()
     {
