@@ -76,3 +76,4 @@ services:
     Isotope\Weight:
         arguments:
             - '@isotope.unit_converter'
+        public: true
