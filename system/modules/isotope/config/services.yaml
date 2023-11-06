@@ -74,5 +74,4 @@ services:
             - 1 # PHP_ROUND_HALF_UP - Rounding mode
 
     Isotope\Weight:
-        arguments:
-            - '@isotope.unit_converter'
+        arguments: ['@isotope.unit_converter']
