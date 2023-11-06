@@ -43,7 +43,7 @@ services:
         public: true
 
     isotope.unit_converter:
-        class: UnitConverter\UnitConverter'
+        class: UnitConverter\UnitConverter
         arguments:
             - '@isotope.unit_registry'
             - '@isotope.binary_calculator'
