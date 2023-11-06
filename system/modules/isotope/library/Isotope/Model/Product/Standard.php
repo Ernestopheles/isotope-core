@@ -42,7 +42,6 @@ use Isotope\Model\ProductPrice;
 use Isotope\Model\ProductType;
 use Isotope\Template;
 use Isotope\Weight;
-use UnitConverter\UnitConverter;
 
 /**
  * Standard implementation of an Isotope product.
@@ -106,16 +105,6 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
      * @var bool
      */
     protected $doNotSubmit = false;
-
-
-    /**
-     * Inject UnitConverter service and Weight service
-     */
-    public function __construct(
-        private UnitConverter $unitConverter,
-        private Weight $weight
-        )
-    {}
 
     /**
      * @inheritdoc
@@ -358,7 +347,7 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
             return null;
         }
 
-        return $this->weight->createFromTimePeriod($this->arrData['shipping_weight']);
+        return Weight::createFromTimePeriod($this->arrData['shipping_weight']);
     }
 
     /**

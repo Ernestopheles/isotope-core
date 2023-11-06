@@ -30,18 +30,20 @@ class Weight implements IsotopeWeighable
      * @param   mixed $arrData
      * @return  Weight|null
      */
-    public function createFromTimePeriod($arrData)
+    public static function createFromTimePeriod($arrData)
     {
         $arrData = StringUtil::deserialize($arrData);
+
+        $weight =  new Weight(self::$unitConverter, $arrData['value'], $arrData['unit']);
 
         if (empty($arrData)
             || !is_array($arrData)
             || $arrData['value'] === ''
             || $arrData['unit'] === ''
-            || !in_array($arrData['unit'], $this->unitConverter->getRegistry()->listUnits('Mass'))) {
+            || !in_array($arrData['unit'], self::$unitConverter->getRegistry()->listUnits('Mass'))) {
             return null;
         }
 
-        return new Weight($arrData['value'], $arrData['unit']);
+        return $weight;
     }
 }
