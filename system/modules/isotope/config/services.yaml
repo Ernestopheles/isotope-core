@@ -47,6 +47,7 @@ services:
         arguments:
             - '@isotope.unit_registry'
             - '@isotope.binary_calculator'
+        public: true
 
     isotope.unit_registry:
         class: UnitConverter\Registry\UnitRegistry
