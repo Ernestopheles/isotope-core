@@ -12,12 +12,6 @@ class Weight implements IsotopeWeighable
 {
 
     /**
-     * UnitConverter service instance
-     * @param   UnitConverter
-     */
-    protected $unitConverter;
-
-    /**
      * Weight amount
      * @param   float
      */
@@ -29,12 +23,17 @@ class Weight implements IsotopeWeighable
      */
     protected $strUnit;
 
+    /**
+     * UnitConverter service instance
+     * @param   UnitConverter
+     */
+    protected $unitConverter;
 
-    public function __construct(UnitConverter $unitConverter, $fltValue, $strUnit)
+    public function __construct($fltValue, $strUnit, UnitConverter $unitConverter)
     {
-        $this->unitConverter = $unitConverter;
         $this->fltValue = $fltValue;
         $this->strUnit = (string) $strUnit;
+        $this->unitConverter = $unitConverter;
     }
 
     public function getWeightValue()
