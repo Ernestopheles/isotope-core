@@ -22,7 +22,6 @@ use Contao\System;
 use Contao\Widget;
 use Hashids\Hashids;
 use Haste\Generator\RowClass;
-use Haste\Units\Mass\WeightAggregate;
 use Haste\Util\Url;
 use Isotope\Collection\ProductPrice as ProductPriceCollection;
 use Isotope\Frontend\ProductAction\ProductActionInterface;
@@ -34,6 +33,7 @@ use Isotope\Interfaces\IsotopePrice;
 use Isotope\Interfaces\IsotopeProduct;
 use Isotope\Interfaces\IsotopeProductCollection;
 use Isotope\Interfaces\IsotopeProductWithOptions;
+use Isotope\Interfaces\IsotopeWeightAggregate;
 use Isotope\Isotope;
 use Isotope\Model\Attribute;
 use Isotope\Model\Gallery;
@@ -46,8 +46,7 @@ use Isotope\Weight;
 /**
  * Standard implementation of an Isotope product.
  */
-class Standard extends AbstractProduct implements WeightAggregate, IsotopeProductWithOptions
-// TODO: for Contao5: Replace interface WeightAggregate
+class Standard extends AbstractProduct implements IsotopeWeightAggregate, IsotopeProductWithOptions
 {
 
     /**
@@ -339,7 +338,7 @@ class Standard extends AbstractProduct implements WeightAggregate, IsotopeProduc
     /**
      * Get the weight of the product (as object)
      *
-     * @return Weight
+     * @return Weight|null
      */
     public function getWeight()
     {

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Isotope eCommerce for Contao Open Source CMS
+ *
+ * Copyright (C) 2009 - 2019 terminal42 gmbh & Isotope eCommerce Workgroup
+ *
+ * @link       https://isotopeecommerce.org
+ * @license    https://opensource.org/licenses/lgpl-3.0.html
+ */
+
 namespace Isotope;
 
 use Contao\StringUtil;
@@ -17,11 +26,17 @@ class Weight implements IsotopeWeighable
     ) {
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getWeightValue()
     {
         return $this->fltValue;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getWeightUnit()
     {
         return $this->strUnit;
