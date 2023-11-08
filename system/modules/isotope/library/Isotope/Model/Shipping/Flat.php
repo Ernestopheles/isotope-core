@@ -12,10 +12,10 @@
 namespace Isotope\Model\Shipping;
 
 use Contao\StringUtil;
-use Haste\Units\Mass\Weight;
 use Isotope\Interfaces\IsotopeProductCollection;
 use Isotope\Isotope;
 use Isotope\Model\Shipping;
+use Isotope\Weight;
 
 /**
  * Class Flat
@@ -70,7 +70,7 @@ class Flat extends Shipping
 
         if ('perWeight' === $this->flatCalculation) {
             $weight = Weight::createFromTimePeriod($this->flatWeight);
-// TODO: for Contao5: Replace Weight::createFromTimePeriod()
+// TODO: for Contao5: Check if string as parameter will work here!
 
             if ($weight) {
                 $cartWeight = floor($objCollection->addToScale()->amountIn($weight->getWeightUnit()));

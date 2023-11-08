@@ -77,3 +77,8 @@ services:
         arguments:
             - '@isotope.unit_converter'
         public: true
+
+    Isotope\Scale:
+        arguments:
+            - '@isotope.unit_converter'
+        public: true

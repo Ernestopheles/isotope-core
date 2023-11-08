@@ -13,13 +13,13 @@ namespace Isotope\Model\ProductCollectionSurcharge;
 
 use Contao\Database;
 use Contao\System;
-use Haste\Units\Mass\Weight;
 use Isotope\Interfaces\IsotopeProductCollection;
 use Isotope\Interfaces\IsotopeProductCollectionSurcharge;
 use Isotope\Isotope;
 use Isotope\Model\ProductCategory;
 use Isotope\Model\ProductCollectionSurcharge;
 use Isotope\Model\Rule as RuleModel;
+use Isotope\Weight;
 
 /**
  * Implements payment surcharge in product collection
@@ -38,14 +38,13 @@ class Rule extends ProductCollectionSurcharge implements IsotopeProductCollectio
         $objScale = Isotope::getCart()->addToScale();
 
         if (($minWeight = Weight::createFromTimePeriod($objRule->minWeight)) !== null
-// TODO: for Contao5: Replace Weight::createFromTimePeriod()
+// TODO: for Contao5: Check if string as parameter is working here!
         && $objScale->isLessThan($minWeight)
         ) {
             return null;
         }
 
         if (($maxWeight = Weight::createFromTimePeriod($objRule->maxWeight)) !== null
-// TODO: for Contao5: Replace Weight::createFromTimePeriod()
 && $objScale->isMoreThan($maxWeight)
         ) {
             return null;

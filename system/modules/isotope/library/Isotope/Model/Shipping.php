@@ -15,14 +15,14 @@ use Contao\Environment;
 use Contao\FrontendUser;
 use Contao\StringUtil;
 use Contao\System;
-use Haste\Units\Mass\Weight;
-use Haste\Units\Mass\WeightAggregate;
 use Isotope\CompatibilityHelper;
 use Isotope\Frontend;
 use Isotope\Interfaces\IsotopeProductCollection;
 use Isotope\Interfaces\IsotopeShipping;
 use Isotope\Isotope;
+use Isotope\Interfaces\IsotopeWeightAggregate;
 use Isotope\Translation;
+use Isotope\Weight;
 
 
 /**
@@ -59,8 +59,7 @@ use Isotope\Translation;
  * @property bool   $logging
  * @property bool   $enabled
  */
-abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggregate
-// TODO: for Contao5: replace WeightAggregate interface
+abstract class Shipping extends TypeAgent implements IsotopeShipping, IsotopeWeightAggregate
 {
     const QUANTITY_MODE_ITEMS = 'cart_items';
     const QUANTITY_MODE_PRODUCTS = 'cart_products';
@@ -150,15 +149,14 @@ abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggr
 
         $objScale = Isotope::getCart()->addToScale();
 
+        // TODO: for Contao5: Check if parameter float will work here!
         if (($minWeight = Weight::createFromTimePeriod($this->minimum_weight)) !== null
-// TODO: for Contao5: replace Weight::createFromTimeperiod()
             && $objScale->isLessThan($minWeight)
         ) {
             return false;
         }
 
         if (($maxWeight = Weight::createFromTimePeriod($this->maximum_weight)) !== null
-// TODO: for Contao5: replace Weight::createFromTimeperiod()
 && $objScale->isMoreThan($maxWeight)
         ) {
             return false;
@@ -379,7 +377,6 @@ abstract class Shipping extends TypeAgent implements IsotopeShipping, WeightAggr
     public function getWeight()
     {
         return Weight::createFromTimePeriod($this->shipping_weight);
-// TODO: for Contao5: replace Weight::createFromTimeperiod()
 }
 
     /**
