@@ -59,7 +59,7 @@ class Weight implements IsotopeWeighable
             || !is_array($arrData)
             || $arrData['value'] === ''
             || $arrData['unit'] === ''
-            || !in_array($arrData['unit'], self::$unitConverter->getRegistry()->listUnits('Mass'))
+            || !in_array($arrData['unit'], self::$unitConverter->getRegistry()->listUnits('mass'))
         ) {
             return null;
         }

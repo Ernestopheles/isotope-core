@@ -43,8 +43,8 @@ use Isotope\Weight;
  * @property float  $quantity_mode
  * @property float  $minimum_quantity
  * @property float  $maximum_quantity
- * @property float  $minimum_weight
- * @property float  $maximum_weight
+ * @property array  $minimum_weight
+ * @property array  $maximum_weight
  * @property array  $product_types
  * @property string $product_types_condition
  * @property array  $config_ids
@@ -149,7 +149,6 @@ abstract class Shipping extends TypeAgent implements IsotopeShipping, IsotopeWei
 
         $objScale = Isotope::getCart()->addToScale();
 
-        // TODO: for Contao5: Check if parameter float will work here!
         if (($minWeight = Weight::createFromTimePeriod($this->minimum_weight)) !== null
             && $objScale->isLessThan($minWeight)
         ) {

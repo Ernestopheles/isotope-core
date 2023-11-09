@@ -40,6 +40,7 @@ use Isotope\Translation;
  * @property int    $minSubtotal
  * @property int    $maxSubtotal
  * @property string $minWeight
+ * TODO: actually this property is an array
  * @property string $maxWeight
  * @property int    $minItemQuantity
  * @property int    $maxItemQuantity

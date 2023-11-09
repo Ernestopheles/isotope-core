@@ -22,6 +22,7 @@ use Isotope\Weight;
  *
  * @property string $flatCalculation
  * @property string $flatWeight
+ * TODO: actually this property is an array
  */
 class Flat extends Shipping
 {
@@ -70,7 +71,6 @@ class Flat extends Shipping
 
         if ('perWeight' === $this->flatCalculation) {
             $weight = Weight::createFromTimePeriod($this->flatWeight);
-// TODO: for Contao5: Check if string as parameter will work here!
 
             if ($weight) {
                 $cartWeight = floor($objCollection->addToScale()->amountIn($weight->getWeightUnit()));

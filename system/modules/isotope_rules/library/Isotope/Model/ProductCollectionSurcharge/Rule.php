@@ -38,7 +38,6 @@ class Rule extends ProductCollectionSurcharge implements IsotopeProductCollectio
         $objScale = Isotope::getCart()->addToScale();
 
         if (($minWeight = Weight::createFromTimePeriod($objRule->minWeight)) !== null
-// TODO: for Contao5: Check if string as parameter is working here!
         && $objScale->isLessThan($minWeight)
         ) {
             return null;
